@@ -21,8 +21,7 @@ public class CarRepositoryMap implements CarRepository {
 
     @Override
     public Car getById(Long id) {
-        Long key = searchForKey(id);
-        return database.get(key);
+        return database.get(id);
     }
 
     @Override
@@ -34,29 +33,18 @@ public class CarRepositoryMap implements CarRepository {
 
     @Override
     public Car update(Car car) {
-        //HOMEWORK - price only - done
+        //HOMEWORK - becomes a fully described car with id - changes price only - done
         BigDecimal price = car.getPrice();
         Long id = car.getId();
-        Long key = searchForKey(id);
-        Car newCar = database.get(key);
+        Car newCar = database.get(id);
         newCar.setPrice(price);
-        database.put(key, newCar);
+        database.put(id, newCar);
         return newCar;
     }
 
     public void delete(Long id) {
         //HOMEWORK - done
-        Long key = searchForKey(id);
-        database.remove(key);
+        database.remove(id);
     }
-
-    private Long searchForKey(Long id) {
-
-        return -1L;
-    }
-/*
-
-
- */
 
 }
