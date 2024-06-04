@@ -38,7 +38,7 @@ public class CarRepositoryMap implements CarRepository {
         Long id = car.getId();
         Car newCar = database.get(id);
         newCar.setPrice(price);
-        database.put(id, newCar);
+        //database.put(id, newCar);
         return newCar;
     }
 
