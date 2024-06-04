@@ -80,5 +80,9 @@ public class CarServlet extends HttpServlet {
        // Car car = mapper.readValue(req.getReader(), Car.class);
         //service.delete(req.getReader());
         //resp.getWriter().write(car.toString());
+        Map<String,String[]> params = req.getParameterMap();
+        // id :[3] - everything is String
+        Long id = Long.parseLong(params.get("id")[0]);
+        service.delete(id);
     }
 }
