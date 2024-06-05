@@ -15,7 +15,16 @@ public class Car {
         this.year = year;
     }
 
+    //for Jackson
     public Car() {
+    }
+
+    // for DB
+    public Car(Long id, String brand, BigDecimal price, int year) {
+        this.id = id;
+        this.brand = brand;
+        this.price = price;
+        this.year = year;
     }
 
     public Long getId() {
@@ -65,6 +74,6 @@ public class Car {
 
     @Override
     public String toString() {
-        return String.format("Car: id - %d, brand - %s, price - %s, year - %d", id, brand, price, year);
+        return String.format("Car: id - %d, brand - %s, price - %s, year - %d \n", id, brand, price, year);
     }
 }
