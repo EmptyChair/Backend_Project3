@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import repository.CarRepository;
+import repository.CarRepositoryDB;
 import repository.CarRepositoryMap;
 import service.CarService;
 import service.CarServiceImpl;
@@ -18,8 +19,8 @@ import java.util.Map;
 
 public class CarServlet extends HttpServlet {
 
-    private CarService service = new CarServiceImpl(new CarRepositoryMap());
-
+    //private CarService service = new CarServiceImpl(new CarRepositoryMap());
+    private CarService service = new CarServiceImpl(new CarRepositoryDB());
     // receiving car or all cars
     // call myself, through default tomcat port 8080:
     // GET http://localhost:8080/cars?id=3 - one car
