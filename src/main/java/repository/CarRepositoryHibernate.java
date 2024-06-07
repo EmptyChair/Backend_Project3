@@ -69,17 +69,22 @@ public class CarRepositoryHibernate implements CarRepository {
         // turn query into a Query-type object and execute
         Query query = entityManager.createQuery(cq);
         return query.getResultList();
+        //ALTERNATIVE:
+        // return entityManager.createQuery("from Car", Car.class).getResultList();w
     }
 
     @Override
     public Car update(Car car) {
+        Long id = car.getId();
+        Car updatedCar = getById(id);
+        updatedCar.setPrice(car.getPrice());
         EntityTransaction transaction = entityManager.getTransaction();
         //TODO
         try {
             transaction.begin();
-            entityManager.merge(car);
+            entityManager.merge(updatedCar);
             transaction.commit();
-            return car;
+            return updatedCar;
         } catch (Exception e) {
             if (transaction.isActive()) {
                 transaction.rollback();
